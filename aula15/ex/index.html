@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numbers e Math</title>
+</head>
+<body>
+    <h2>
+        Seu número é: <span id="escolha">0</span>
+    </h2>
+    <div id="operacoes">
+
+    </div>
+    <script>
+        
+        let num = Number(window.prompt('Digite um numero: '))
+        let escolha =document.getElementById('escolha')
+        let op = document.getElementById('operacoes') 
+        escolha.innerHTML = num;
+        let raiz = num ** 0.5;
+        op.innerHTML += `A raiz quadrada é: ${raiz} `
+        op.innerHTML += `<p> ${num} é inteiro: ${Number.isInteger(num)} <p/>`
+        op.innerHTML += `<p> É NaN: ${Number.isNaN(num)}`
+        op.innerHTML += `<p> Arredondado para baixo: ${Math.floor(num)} <p/>`
+        op.innerHTML += `<p> Arredondado para cima: ${Math.ceil(num)} <p/>`
+        op.innerHTML += `<p> Com duas casas decimais: ${num.toFixed(2)} <p/>`
+    </script>
+</body>
+
+</html>
