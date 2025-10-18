@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Pessoal</title>
+</head>
+<body>
+    <form class="form" action="" method="get" autocomplete="on">
+        <div>
+            <label for="inome">Nome: <input type="text" id="inome" class="nome">
+            </label>
+        </div>
+        <div>
+            <label for="isobrenome">Sobrenome: <input type="text" id="isobrenome" class="sobrenome">
+            </label>
+        </div>
+        <div>
+            <label for="ipeso">Peso: <input type="text" id="ipeso" class="peso">
+            </label>
+        </div>
+         <div>
+            <label for="ialtura">Altura: <input type="text" id="ialtura" class="altura">
+            </label>
+        </div>
+        <div>
+            <button onclick="">Enviar</button>
+        </div>
+        <div class="resultado"></div>
+    </form>
+    <script>
+        function meuEscopo(){
+            const form = document.querySelector('.form')
+            const resultado = document.querySelector('.resultado')
+            /*form.onsubmit = function(evento){
+                evento.preventDefault()
+                alert(1)
+                console.log('Foi enviado')
+            };*/
+            const pessoas = []
+            function recebeEventoForm(evento){
+                evento.preventDefault();
+                const nome = form.querySelector('.nome')
+                const sobrenome = form.querySelector('.sobrenome')
+                const peso = form.querySelector('.peso')
+                const altura = form.querySelector('.altura')
+                
+                const criarPessoa = {
+                    nome: nome.value,
+                    sobrenome : sobrenome.value,
+                    peso: peso.value,
+                    altura: altura.value
+                }
+                pessoas.push(criarPessoa)
+                resultado.innerHTML += `<p>${nome.value} ${sobrenome.value}, ${peso.value}, ${altura.value}</p>`
+                console.log(pessoas)
+            }
+            form.addEventListener('submit', recebeEventoForm);
+        }
+        meuEscopo();
+    </script>
+</body>
+</html>
