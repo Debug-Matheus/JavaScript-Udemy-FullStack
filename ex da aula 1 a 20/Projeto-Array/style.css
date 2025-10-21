@@ -85,4 +85,8 @@ main label input{
 #alunos{
     color:black
 }
+#alunosRemovidos{
+    color: black;
+    margin-top: 5px;
+}
 

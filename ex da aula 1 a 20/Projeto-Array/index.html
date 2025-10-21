@@ -16,16 +16,20 @@
             <label for="iadicionar">Adicionar
                 <input type="text" name="adicionar" id="iadicionar" placeholder="ex: Matheus">
             </label>
-            <button onclick="add()">Adicionar</button>
+            <button onclick="adicionando()">Adicionar</button>
             <label for="iremover">Remover
                 <input type="text" name="remover" id="iremover" placeholder="ex: Matheus">
             </label>
             <button onclick="remove()">Remover</button>
             <div id="alunos"></div>
+            <div id="alunosRemovidos"></div>
         </div>
         <script>
             const nomes = []
+            const removidos =[]
             let estudantes = document.getElementById('alunos')
+            let estudantesRemovidos = document.getElementById('alunosRemovidos')
+            
             function lista(a,n){
                 if(n.indexOf(a.trim().toLowerCase())!= -1){
                     return true
@@ -33,8 +37,7 @@
                     return false
                 }
             }
-            function add(){
-                
+            function adicionando(){
                 let adicionar = (document.getElementById('iadicionar'))
                 let add = adicionar.value
                 if(add === ""){
@@ -42,9 +45,13 @@
                     return
                 }
                 if(!lista(add, nomes)){
-                    
                      nomes.push(add.toLowerCase())
+                     const idxRemovido = removidos.indexOf(add);
+                     if (idxRemovido !== -1) {
+                        removidos.splice(idxRemovido, 1);
+                     }
                      estudantes.innerHTML = "Lista de alunos:<br>" + nomes.join("<br>");
+                     estudantesRemovidos.innerHTML = "Removidos:<br>" + (removidos.join("<br>") || "Nenhum");
                      console.log(nomes)
                      adicionar.value = ""; 
                      adicionar.focus();
@@ -53,25 +60,22 @@
                 }
                 
             }
-            function lista2(aalunos,removidos){
-                if(removidos.indexOf(aalunos)!= -1){
-                    return true
-                }else{
-                    return false
-                }
-            }
             
-            const removidos =[]
+            
             function remove(){
                 let remover = (document.getElementById('iremover'))
-                let removerAluno = remover.value
-                if(!lista(removerAluno, removidos)){
-                    const nomesRemovidos = nomes.pop(removerAluno)
-                    removidos.push(nomesRemovidos)
+                let removerAluno = remover.value.trim().toLowerCase()
+                const indice = nomes.indexOf(removerAluno);
+                if(indice != -1){
+        
+                    removidos.push(nomes.splice(indice,1)[0])
+                    estudantes.innerHTML = "Lista de alunos:<br>" + (nomes.join("<br>") || "Nenhum");
+                    estudantesRemovidos.innerHTML = "Removidos:<br>" + removidos.join("<br>");
                     console.log(removidos)
-                    console.log(nomes)
+                    remover.value = ""; 
+                    remover.focus();
                 }else{
-                    window.alert('Nome invalido ou ja removido na lista')
+                    window.alert('Ainda não existe esse nome para remover')
                 }
             }
         </script>
