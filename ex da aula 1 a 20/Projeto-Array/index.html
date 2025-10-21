@@ -69,7 +69,9 @@
                 if(indice != -1){
         
                     removidos.push(nomes.splice(indice,1)[0])
+                    
                     estudantes.innerHTML = "Lista de alunos:<br>" + (nomes.join("<br>") || "Nenhum");
+                    
                     estudantesRemovidos.innerHTML = "Removidos:<br>" + removidos.join("<br>");
                     console.log(removidos)
                     remover.value = ""; 
