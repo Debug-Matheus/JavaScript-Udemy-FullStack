@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Lista de Alunos</h1>
+    </header>
+    <main> 
+        <div class="list">
+            <label for="iadicionar">Adicionar
+                <input type="text" name="adicionar" id="iadicionar" placeholder="ex: Matheus">
+            </label>
+            <button onclick="add()">Adicionar</button>
+            <label for="iremover">Remover
+                <input type="text" name="remover" id="iremover" placeholder="ex: Matheus">
+            </label>
+            <button onclick="remove()">Remover</button>
+            <div id="alunos"></div>
+        </div>
+        <script>
+            const nomes = []
+            let estudantes = document.getElementById('alunos')
+            function lista(a,n){
+                if(n.indexOf(a.trim().toLowerCase())!= -1){
+                    return true
+                }else{
+                    return false
+                }
+            }
+            function add(){
+                
+                let adicionar = (document.getElementById('iadicionar'))
+                let add = adicionar.value
+                if(add === ""){
+                    window.alert('Precisa de um nome')
+                    return
+                }
+                if(!lista(add, nomes)){
+                    
+                     nomes.push(add.toLowerCase())
+                     estudantes.innerHTML = "Lista de alunos:<br>" + nomes.join("<br>");
+                     console.log(nomes)
+                     adicionar.value = ""; 
+                     adicionar.focus();
+                }else{ 
+                    window.alert('Nome invalido ou já encontrado na lista.')
+                }
+                
+            }
+            function lista2(aalunos,removidos){
+                if(removidos.indexOf(aalunos)!= -1){
+                    return true
+                }else{
+                    return false
+                }
+            }
+            
+            const removidos =[]
+            function remove(){
+                let remover = (document.getElementById('iremover'))
+                let removerAluno = remover.value
+                if(!lista(removerAluno, removidos)){
+                    const nomesRemovidos = nomes.pop(removerAluno)
+                    removidos.push(nomesRemovidos)
+                    console.log(removidos)
+                    console.log(nomes)
+                }else{
+                    window.alert('Nome invalido ou ja removido na lista')
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>

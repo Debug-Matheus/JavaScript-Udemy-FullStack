@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+body{
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255); 
+    width: 100vw;
+    height: 100vh;
+}
+header{
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;;
+    background-color: rgb(38, 71, 104);
+}
+main{
+    min-width: 100%;
+    min-height: 100%;
+    background-color: yellow;
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    background-color: rgb(38, 71, 104);
+}
+main div.list{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    min-width: 300px;
+    min-height: 300px;
+    margin: 10px;
+    background-color: white;
+    color: rgb(255, 255, 255);
+}
+main div button{
+    font-size: 15px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+    width: 100%;
+    filter: saturate(5px);
+    background-image: linear-gradient(rgb(105, 105, 235), black, rgb(106, 106, 233));
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;
+    border: olive 1px solid;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+main div button:hover{
+    background-image: linear-gradient(to right, white,rgb(81, 81, 228));
+    color: rgb(0, 0, 0);
+}
+main label{
+    font-size: 15px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;
+    border: olive 1px solid;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+    
+}
+main label input{
+    font-size: 15px;
+    margin: 10px 0px 0px 0px;
+    padding: 10px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    transition: all 0.2s ease-in-out;
+    border: olive 1px solid;
+    box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
+}
+#alunos{
+    color:black
+}
+
