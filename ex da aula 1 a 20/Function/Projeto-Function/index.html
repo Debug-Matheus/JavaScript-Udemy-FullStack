@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <header>
+        <h1>Calculadora Básica</h1>
+    
+    </header>
+    <main class="container">
+        
+       <div class="entrada">
+            <label for="inumber">Digite o primeiro número:</label>
+            <input type="number" name="number" id="inumber" placeholder="Ex: 50">
+            
+       </div>
+       <div class="entrada">
+            <label for="inumber2">Digite o segundo número:</label>
+            <input type="number" name="number2" id="inumber2" placeholder="Ex:60">
+            <button id="zerar"onclick="zerar()">Zerar</button>
+            </div>
+       <p id="res"></p>
+       <div>
+        
+       </div>
+       <div class="botoes">
+        <button onclick="somar()">Somar</button>
+        <button onclick ="subtrair()">Subtrair</button>
+        <button onclick="multiplicar()">Multiplicar</button>
+        <button onclick="dividir()">Dividir</button>
+       </div>
+    </main>
+    <div class="rodape">
+        <a href="https://github.com/Debug-Matheus" target="_blank">Debug-Matheus</a>
+    </div>
+    <script>
+        let primeiroNumero = document.getElementById('inumber')
+        let segundoNumero = document.getElementById('inumber2')
+        let resposta = document.getElementById('res')
+        
+        function zerar(){
+            primeiroNumero.value="";
+            segundoNumero.value="";
+            resposta.style.visibility = 'hidden';
+            primeiroNumero.focus()
+        }
+
+        
+        function somar(){
+            
+            let numero1 = Number(primeiroNumero.value);
+            let numero2 = Number(segundoNumero.value);
+            if(numero1 == "" || numero2 == ""){
+                window.alert('Precisa digitar dois números')
+                return
+            }
+            const resultado = numero1 + numero2;
+            resposta.innerHTML = resultado;
+            resposta.style.visibility = 'visible';
+            primeiroNumero.value="";
+            segundoNumero.value="";
+            primeiroNumero.focus();
+        }
+        function subtrair(){
+            
+            let numero1 = Number(primeiroNumero.value);
+            let numero2 = Number(segundoNumero.value);
+            if(numero1 == "" || numero2 == ""){
+                window.alert('Precisa digitar dois números')
+                return
+            }
+            const resultado = numero1 - numero2;
+            resposta.innerHTML = resultado;
+            resposta.style.visibility = 'visible';
+            primeiroNumero.value = "";
+            segundoNumero.value = "";
+            primeiroNumero.focus();
+        }
+        function multiplicar(){
+            
+            let numero1 = Number(primeiroNumero.value);
+            let numero2 = Number(segundoNumero.value);
+            if(numero1 == "" || numero2 == ""){
+                window.alert('Precisa digitar dois números')
+                return
+            }
+            const resultado = numero1 * numero2;
+            resposta.innerHTML = resultado;
+            resposta.style.visibility = 'visible';
+            primeiroNumero.value = "";
+            segundoNumero.value = "";
+            primeiroNumero.focus();
+        }
+        function dividir(){
+            let numero1 = Number(primeiroNumero.value);
+            let numero2 = Number(segundoNumero.value);
+            if(numero1 == "" || numero2 == ""){
+                window.alert('Precisa digitar dois números')
+                return
+            }
+            const resultado = numero1 / numero2;
+            resposta.innerHTML = resultado.toFixed(2);
+            resposta.style.visibility = 'visible';
+            primeiroNumero.value = "";
+            segundoNumero.value = "";
+            primeiroNumero.focus();
+        }
+    </script>
+</body>
+</html>
