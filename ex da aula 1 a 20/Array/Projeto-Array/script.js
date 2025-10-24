@@ -1,0 +1,55 @@
+            const nomes = []
+            const removidos =[]
+            let estudantes = document.getElementById('alunos')
+            let estudantesRemovidos = document.getElementById('alunosRemovidos')
+            
+            function lista(a,n){
+                if(n.indexOf(a.trim().toLowerCase())!= -1){
+                    return true
+                }else{
+                    return false
+                }
+            }
+            function adicionando(){
+                let adicionar = (document.getElementById('iadicionar'))
+                let add = adicionar.value
+                if(add === ""){
+                    window.alert('Precisa de um nome')
+                    return
+                }
+                if(!lista(add, nomes)){
+                     nomes.push(add.toLowerCase())
+                     const idxRemovido = removidos.indexOf(add);
+                     if (idxRemovido !== -1) {
+                        removidos.splice(idxRemovido, 1);
+                     }
+                     estudantes.innerHTML = "Lista de alunos:<br>" + nomes.join("<br>");
+                     estudantesRemovidos.innerHTML = "Removidos:<br>" + (removidos.join("<br>") || "Nenhum");
+                     console.log(nomes)
+                     adicionar.value = ""; 
+                     adicionar.focus();
+                }else{ 
+                    window.alert('Nome invalido ou já encontrado na lista.')
+                }
+                
+            }
+            
+            
+            function remove(){
+                let remover = (document.getElementById('iremover'))
+                let removerAluno = remover.value.trim().toLowerCase()
+                const indice = nomes.indexOf(removerAluno);
+                if(indice != -1){
+        
+                    removidos.push(nomes.splice(indice,1)[0])
+                    
+                    estudantes.innerHTML = "Lista de alunos:<br>" + (nomes.join("<br>") || "Nenhum");
+                    
+                    estudantesRemovidos.innerHTML = "Removidos:<br>" + removidos.join("<br>");
+                    console.log(removidos)
+                    remover.value = ""; 
+                    remover.focus();
+                }else{
+                    window.alert('Ainda não existe esse nome para remover')
+                }
+            }
