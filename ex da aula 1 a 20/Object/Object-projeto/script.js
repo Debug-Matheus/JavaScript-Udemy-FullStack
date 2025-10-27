@@ -21,7 +21,10 @@
             nomeValor = nome.value
             precoValor = Number(preco.value)
             descontoValor = Number(desconto.value)/100
-            
+            if(nomeValor == "" || precoValor == "" || descontoValor == "") {
+                window.alert('Precisa preencher todos os campos')
+                return
+            }
             let cadastrarProdutos = {
                 nome: nomeValor,
                 preco : aplicarDesconto(descontoValor, precoValor),
@@ -45,6 +48,10 @@
                 linha.appendChild(label)
                 exibir.appendChild(linha)
                 console.log(produtos)
+                nomeValor.value = ''
+                preco.value = ''
+                desconto.value = ''
+                nome.focus()
             }else{
                 window.alert('Produto ja cadastrado')
                 return
@@ -57,9 +64,9 @@
             const marcados = document.querySelectorAll('.produto-check:checked')
 
              marcados.forEach(chk => {
-            const id = Number(chk.dataset.id)
-            produtos = produtos.filter(p => p.id !== id)
-            chk.parentElement.remove()
+                const id = Number(chk.dataset.id)
+                produtos = produtos.filter(p => p.id !== id)
+                chk.parentElement.remove()
             })
 
             console.log('Após deletar:', produtos)
@@ -72,6 +79,10 @@
             if (encontrado) {
                 console.log('Produto encontrado:', encontrado)
                 alert(`Produto: ${encontrado.nome}\nPreço: R$${encontrado.preco.toFixed(2)}\nDesconto: ${encontrado.desconto * 100}%`)
+                nomeValor.value = ''
+                preco.value = ''
+                desconto.value = ''
+                nome.focus()
             } else {
                 alert('Produto não encontrado!')
             }
@@ -96,7 +107,11 @@
 
                 alert(`Produto "${produto.nome}" alterado com sucesso!`)
                 console.log('Após alteração:', produtos)
-            } else {
-                alert('Produto não encontrado!')
-            }
+                nomeValor.value = ''
+                preco.value = ''
+                desconto.value = ''
+                nome.focus()
+                } else {
+                    alert('Produto não encontrado!')
+                }
         }
