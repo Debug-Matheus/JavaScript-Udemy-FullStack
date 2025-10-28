@@ -94,7 +94,10 @@
         }
         function concluir() {
             const marcados = document.querySelectorAll('.tarefa-check:checked')
-
+            if(tarefasNaoConcluidas == ""){
+                window.alert('Não há tarefa para concluir')
+                return
+            }
             marcados.forEach(chk => {
                 const id = Number(chk.dataset.id)
 
@@ -139,7 +142,10 @@
         }
         function naoConcluir() {
             const marcados = document.querySelectorAll('.tarefa-check:checked')
-
+            if(tarefasConcluidas == ""){
+                window.alert('Não há tarefa concluída')
+                return
+            }
             marcados.forEach(chk => {
                 const id = Number(chk.dataset.id)
 
@@ -184,7 +190,10 @@
         }
         function remover() {
             const marcados = document.querySelectorAll('.tarefa-check:checked')
-
+            if(tarefasConcluidas == "" && tarefasNaoConcluidas == ""){
+                window.alert('Não existe tarefa para remover')
+                return
+            }
             marcados.forEach(chk => {
                 const id = Number(chk.dataset.id)
 
