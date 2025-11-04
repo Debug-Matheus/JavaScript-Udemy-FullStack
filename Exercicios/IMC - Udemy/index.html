@@ -48,11 +48,9 @@
 
         <form onsubmit="return false">
             <label for="ipeso">Peso (kg)</label>
-            <input type="text" id="ipeso" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')" inputmode="decimal"
-                pattern="^[0-9](?:[.,][0-9]{1,2})?$" oninput="formatarAltura(this)" />
+            <input type="text" id="ipeso" oninput="formatarPeso(this)" inputmode="decimal" />
             <label for="ialtura">Altura (m)</label>
-            <input type="text" id="ialtura" oninput="this.value = this.value.replace(/[^0-9.,]/g, '')"
-                inputmode="decimal" pattern="^[0-9](?:[.,][0-9]{1,2})?$" />
+            <input type="text" id="ialtura" inputmode="decimal" oninput="formatarAltura(this)" />
             <input type="button" value="Calcular" class="button" onclick="calcular()">
             <input type="reset" value="Limpar" class="button" onclick="limpar()">
         </form>
@@ -103,14 +101,37 @@
             calculo(pesoValor, alturaValor)
         }
         function formatarAltura(campo) {
-            
+            // Remove tudo que não for número
             let valor = campo.value.replace(/\D/g, '');
+
+            // Se o usuário digitar '185', vira '1,85'
             if (valor.length === 3) {
                 valor = valor[0] + ',' + valor.slice(1);
             }
             
+            // Se digitar '1750', vira '1,75' (descarta extra)
             else if (valor.length > 3) {
                 valor = valor[0] + ',' + valor.slice(1, 3);
+            }
+
+            campo.value = valor;
+        }
+        function formatarPeso(campo) {
+            // Remove tudo que não for número
+            let valor = campo.value.replace(/\D/g, '');
+
+            // Caso digite menos que 3 números, mantém sem vírgula
+            if (valor.length <= 2) {
+                campo.value = valor;
+                return;
+            }
+
+            // Insere vírgula antes das duas últimas casas
+            valor = valor.slice(0, -2) + ',' + valor.slice(-2);
+
+            // Impede mais de 6 dígitos (ex: 9999,99)
+            if (valor.length > 7) {
+                valor = valor.slice(0, 7);
             }
 
             campo.value = valor;
