@@ -54,7 +54,7 @@
             <input type="button" value="Calcular" class="button" onclick="calcular()">
             <input type="reset" value="Limpar" class="button" onclick="limpar()">
         </form>
-        <div id="resultado" ></div>
+        <div id="resultado"></div>
     </section>
     <script>
         const peso = document.getElementById('ipeso')
@@ -82,12 +82,18 @@
 
             const pesoValor = Number(peso.value.replace(',', '.'));
             const alturaValor = Number(altura.value.replace(',', '.'));
-            if (!pesoValor || !alturaValor || pesoValor <= 0 || alturaValor <= 0) {
+            if (!pesoValor || !alturaValor) {
                 return window.alert('Preencha todos os campos!')
+            }
+            if(pesoValor <= 0 || alturaValor <= 0){
+                return window.alert('Os valores devem ser maior que zero')
+            }
+            if (isNaN(pesoValor) || isNaN(alturaValor)) {
+                return window.alert('Digite apenas números válidos!');
             }
             calculo(pesoValor, alturaValor)
         }
-        function limpar(){
+        function limpar() {
             res.style.display = 'none'
         }
     </script>
