@@ -1,1 +1,1 @@
-[Acesse aqui o Exercício](https://projeto-imc01.netlify.app/)
+[Acesse aqui o Exercício](https://projeto-imc01.netlify.app/ )
