@@ -83,13 +83,16 @@
             const pesoValor = Number(peso.value.replace(',', '.'));
             const alturaValor = Number(altura.value.replace(',', '.'));
             if (pesoValor === ""|| alturaValor === "") {
-                return window.alert('Preencha todos os campos!')
+                window.alert('Preencha todos os campos!')
+                return
             }
             if(pesoValor <= 0 || alturaValor <= 0){
-                return window.alert('Os valores devem ser maior que zero')
+                window.alert('Os valores devem ser maior que zero')
+                return
             }
             if (isNaN(pesoValor) || isNaN(alturaValor)) {
-                return window.alert('Digite apenas números válidos!');
+                window.alert('Digite apenas números válidos!');
+                return
             }
             calculo(pesoValor, alturaValor)
         }
