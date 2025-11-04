@@ -117,31 +117,31 @@
             campo.value = valor;
         }
         function formatarPeso(campo) {
-            // Remove tudo que não for número
+            // Remove tudo que não for número (mantém só dígitos)
             let valor = campo.value.replace(/\D/g, '');
 
-            // Caso digite menos que 3 números, mantém sem vírgula
+            // Se tiver até 2 dígitos, exibe apenas eles (ex: "75")
             if (valor.length <= 2) {
                 campo.value = valor;
                 return;
             }
 
-            // Se tiver 3 dígitos → vírgula depois dos 2 primeiros (ex: 75,3)
-            if (valor.length === 3) {
+            // Se tiver exatamente 3 dígitos, coloca vírgula depois dos 2 primeiros (ex: "753" → "75,3")
+            if (valor.length === 3)
                 valor = valor.slice(0, 2) + ',' + valor.slice(2);
-            }
-            // Se tiver 4 ou 5 dígitos → vírgula depois do 3º (ex: 753,4 / 753,45)
-            else if (valor.length >= 4) {
+
+            // Se tiver 4 ou mais dígitos, coloca vírgula depois dos 3 primeiros e limita a 2 casas decimais (ex: "75345" → "753,45")
+            else if (valor.length >= 4)
                 valor = valor.slice(0, 3) + ',' + valor.slice(3, 5);
-            }
 
-            // Impede mais de 6 dígitos (ex: 9999,99)
-            if (valor.length > 6) {
-                valor = valor.slice(0, 6);
-            }
+            // Garante que o valor final não ultrapasse 7 caracteres (ex: "999,99")
+            if (valor.length > 7)
+                valor = valor.slice(0, 7);
 
+            // Atualiza o valor formatado no input
             campo.value = valor;
         }
+
         function limpar() {
             res.style.display = 'none'
         }
