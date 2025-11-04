@@ -82,7 +82,7 @@
 
             const pesoValor = Number(peso.value.replace(',', '.'));
             const alturaValor = Number(altura.value.replace(',', '.'));
-            if (!pesoValor || !alturaValor) {
+            if (pesoValor === ""|| alturaValor === "") {
                 return window.alert('Preencha todos os campos!')
             }
             if(pesoValor <= 0 || alturaValor <= 0){
