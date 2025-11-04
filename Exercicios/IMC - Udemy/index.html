@@ -126,8 +126,14 @@
                 return;
             }
 
-            // Insere vírgula antes das duas últimas casas
-            valor = valor.slice(0, -3) + ',' + valor.slice(-3);
+            // Se tiver 3 dígitos → vírgula depois dos 2 primeiros (ex: 75,3)
+            if (valor.length === 3) {
+                valor = valor.slice(0, 2) + ',' + valor.slice(2);
+            }
+            // Se tiver 4 ou 5 dígitos → vírgula depois do 3º (ex: 753,4 / 753,45)
+            else if (valor.length >= 4) {
+                valor = valor.slice(0, 3) + ',' + valor.slice(3, 5);
+            }
 
             // Impede mais de 6 dígitos (ex: 9999,99)
             if (valor.length > 6) {
