@@ -48,7 +48,8 @@
 
         <form onsubmit="return false">
             <label for="ipeso">Peso (kg)</label>
-            <input type="text" id="ipeso" oninput="formatarPeso(this)" inputmode="decimal" />
+            <input type="text" id="ipeso" oninput="formatarPeso(this)" inputmode="decimal"/>
+            <!--oninput="this.value=this.value.replace(/[^0-9.,]/g,'')" --> 
             <label for="ialtura">Altura (m)</label>
             <input type="text" id="ialtura" inputmode="decimal" oninput="formatarAltura(this)" />
             <input type="button" value="Calcular" class="button" onclick="calcular()">
