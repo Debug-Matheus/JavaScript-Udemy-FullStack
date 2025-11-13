@@ -1,3 +1,4 @@
+//SWITCH + OBJECT DATE
 function getDiaSemana (dia){
     let verificarDia;
     switch (dia){

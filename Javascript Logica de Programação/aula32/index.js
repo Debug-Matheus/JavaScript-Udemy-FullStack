@@ -1,3 +1,4 @@
+//Atribuição via desestruturação (Array)
 let a = 'A'
 let b = 'B'
 let c = 'C'
