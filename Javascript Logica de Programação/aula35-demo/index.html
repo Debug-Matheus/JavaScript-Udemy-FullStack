@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <section class="container">
+        <h1>Lorem ipsum dolor sit amet</h1>
+        <!-- <div>
+            <p>Frase 1</p>
+            <div>Frase 2</div>
+            <footer>Frase 3</footer>
+            <section>Frase 4</section>
+        </div> -->
+    </section>
+    <script>
+        const elementos = [
+            {tag: 'p', texto: 'Frase 1'},
+            {tag: 'div', texto: 'Frase 2'},
+            {tag: 'footer', texto: 'Frase 3'},
+            {tag: 'section', texto: 'Frase 4'}
+        ]
+        const container = document.querySelector('.container')
+        
+        function incremento(){
+            const div = document.createElement('div')
+            for(let i = 0; i < elementos.length; i++){
+                let{tag, texto} = elementos[i]
+                let tagCriada = document.createElement(tag)
+                tagCriada.innerText = texto
+                div.appendChild(tagCriada)
+            }
+            container.appendChild(div)
+        }
+        incremento()
+    </script>
+</body>
+</html>
