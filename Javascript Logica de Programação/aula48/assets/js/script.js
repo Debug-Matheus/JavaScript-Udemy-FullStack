@@ -1,4 +1,5 @@
-const botãoAdd = document.querySelector('.btn-add-tarefa')
+function tarefas(){
+    const botãoAdd = document.querySelector('.btn-add-tarefa')
         const inputTarefa = document.querySelector('.input-nova-tarefa')
         const exibirTarefas = document.querySelector('.tarefas')
         let tarefasAdicionadas = [];
@@ -16,7 +17,7 @@ const botãoAdd = document.querySelector('.btn-add-tarefa')
 
             //Verifica se o input esta vazio ou se a tarefa ja foi adicionada
             if(inputTarefaValor === '' || verificarTarefa(inputTarefaValor, tarefasAdicionadas)){
-                alert('Tarefa ja adicionado ou o compo encontra-se vazio')
+                alert('Tarefa ja adicionado ou o caDDmpo encontra-se vazio')
                 return
             }
                 //Adiciona no array
@@ -57,3 +58,6 @@ const botãoAdd = document.querySelector('.btn-add-tarefa')
             })
             
         })
+}
+
+tarefas()
