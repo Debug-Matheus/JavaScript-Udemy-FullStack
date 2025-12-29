@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage 3 </title>
+</head>
+<body>
+    <input type="text" id="tarefa">
+    <button id="adicionar">Adicionar</button>
+    <ul id="exibir">
+        
+    </ul>
+    <script>
+        const input = document.querySelector('#tarefa')
+        const btnAdd = document.querySelector('#adicionar')
+        const exibir = document.querySelector('#exibir')
+        const listaTarefas = []
+
+        function verificarDuplicada(inputTarefa,listaArray){
+            if(listaArray.some(tarefa => tarefa.nome.trim().toLowerCase() === inputTarefa.trim().toLowerCase())){
+                throw new Error('Tarefa ja adicionada')
+            }
+        }
+        function verificarCampoVazio(inputTarefa){
+            if( inputTarefa.trim() === ''){
+                throw new Error('Campo vazio')
+            }
+        }
+        
+        function renderizarTarefa(tarefa){
+            const li = document.createElement('li')
+            li.innerText = tarefa.nome
+            exibir.appendChild(li)
+        }
+        function criarTarefa(inputTarefa){
+            const tarefa = {
+                nome: inputTarefa
+            }
+            listaTarefas.push(tarefa)
+            renderizarTarefa(tarefa)
+            salvarTarefaNavegador()
+        }
+        function salvarTarefaNavegador(){
+            const tarefasJSON = JSON.stringify(listaTarefas)
+            localStorage.setItem('tarefas', tarefasJSON)
+        }
+        function adicionarTarefasSalvas(){
+            const tarefasSalvas = localStorage.getItem('tarefas')
+            if(!tarefasSalvas)return; 
+
+            const tarefas = JSON.parse(tarefasSalvas)
+            for(tarefa of tarefas){
+                listaTarefas.push(tarefa)
+                renderizarTarefa(tarefa)
+            }
+        }
+        adicionarTarefasSalvas()
+        btnAdd.addEventListener('click', ()=>{
+            try {
+                verificarCampoVazio(input.value)
+                verificarDuplicada(input.value,listaTarefas)
+                criarTarefa(input.value)
+                
+            } catch (error) {
+                alert(error.message)
+            }finally{
+                input.value = ''
+                input.focus()
+            }
+             
+        })
+        
+        console.log(listaTarefas)
+    </script>
+</body>
+</html>

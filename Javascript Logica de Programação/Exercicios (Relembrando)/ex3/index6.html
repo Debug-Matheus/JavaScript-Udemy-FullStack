@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>try/catch</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            width: 100vw;
+            height: 100vh;
+            background-color: #125e75;
+        }
+        main{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            background-color: blue;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <main>
+        <section class="container">
+        <input type="text" id="valor">
+        <button id="btn">Validar</button>
+        
+        </section>
+        <ul id="result">
+            
+        </ul>
+    </main>
+    <script>
+        const input = document.querySelector('#valor')
+        const botao = document.querySelector('#btn')
+        const exibir = document.querySelector('#result')
+        function verificarEntrada(valor){
+            const valorNum = Number(valor)
+            if(isNaN(valorNum) || valorNum < 0){
+                throw new Error('Digite um número válido')
+            }
+            return valorNum
+        }
+        botao.addEventListener('click', function(){
+            
+            
+            try{
+                const numero = verificarEntrada(input.value)
+                const li = document.createElement('li') 
+                li.innerText = numero ** 2
+                exibir.appendChild(li)
+            }catch(err){
+                alert(err.message)
+                return
+            }finally{
+                input.value = ''
+                input.focus()
+            }
+            
+            
+            
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>localStorage 1 </title>
+</head>
+<body>
+    <input id="nome">
+    <button id="salvar">Salvar</button>
+    <p id="saida"></p>
+    <script>
+        const input = document.querySelector('#nome')
+        const btn = document.querySelector('#salvar')
+        const saida = document.querySelector('#saida')
+
+        //carregar dado salvo ao abrir a pagina
+        const nomeSalvo = localStorage.getItem('nome')
+        if(nomeSalvo){
+            saida.innerText = `Nome salvo: ${nomeSalvo}`
+        }
+        btn.addEventListener('click', () =>{
+            const valor = input.value.trim()
+            if(!valor) return
+
+            localStorage.setItem('nome', valor)
+            saida.innerText = `Nome salvo: ${valor}`
+            input.value = ''
+        })
+    </script>
+</body>
+</html>

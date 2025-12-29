@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/82d132678a.js" crossorigin="anonymous"></script>
+    <title>localStorage 4</title>
+    <style>
+        body{
+            background-color: rgb(146, 146, 4);
+        }
+        #cliquesol{
+            display: none; 
+            cursor: pointer;
+        }
+        #cliquelua{
+            cursor: pointer;
+        }
+        .noite{
+            background-color: rgb(5, 5, 54);
+            transition: all 0.5s ease-in-out;
+            
+        }
+        .dia{
+            background-color: rgb(146, 146, 4);
+            transition: all 0.5s ease-in-out;
+            
+        }
+        #sol{
+            transition: all 0.5s ease-in-out;
+        }   
+        #lua{
+            transition: all 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="dia">
+    <button id="cliquesol">
+        <i id="sol" class="fa-solid fa-sun"></i>
+    </button>
+    <button id="cliquelua">
+        <i id="lua" class="fa-solid fa-moon"></i>
+    </button>
+    <script>
+        const btnSol = document.querySelector('#cliquesol')
+        const btnLua = document.querySelector('#cliquelua')
+        const body = document.querySelector('body')
+        
+        const temaSalvo = localStorage.getItem('tema')
+        
+        if(temaSalvo === 'noite'){
+            body.classList.remove('dia')
+            body.classList.add('noite')
+            btnSol.style.display = 'block'
+            btnLua.style.display = 'none'
+            
+        }else{
+            body.classList.remove('noite')
+            body.classList.add('dia')
+            btnSol.style.display = 'none'
+            btnLua.style.display = 'block'
+        }
+        
+        btnLua.addEventListener('click', () =>{
+            body.classList.remove('dia')
+            body.classList.add('noite')
+            btnSol.style.display = 'block'
+            btnLua.style.display = 'none'
+            localStorage.setItem('tema', 'noite')
+            
+
+        })
+        btnSol.addEventListener('click', () =>{
+            body.classList.remove('noite')
+            body.classList.add('dia')
+            btnSol.style.display = 'none'
+            btnLua.style.display = 'block'
+            localStorage.setItem('tema', 'dia')
+            
+        })
+    </script>
+</body>
+</html>

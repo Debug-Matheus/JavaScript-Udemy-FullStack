@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desestruturação de Objeto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+    <section class="container">
+        <h1>Lista com Desestruturação</h1>
+        <p class="item">
+            <label>Nome:</label>
+            <input type="text" id="nome">
+
+            <label>Idade:</label>
+            <input type="number" id="idade">
+
+            <label>Profissão:</label>
+            <input type="text" id="prof">
+
+            <button id="btn">Adicionar</button>
+
+        </p>
+        <ul class="dados">
+
+        </ul>
+    </section>
+    <script>
+        const nome = document.querySelector("#nome")
+        const idade = document.querySelector("#idade")
+        const prof = document.querySelector("#prof")
+        const botaoadd = document.querySelector("#btn")
+        const exibirTarefa = document.querySelector(".dados")
+        const dadosAdicionados = []
+        function verificarDuplicidade(obj, array) {
+            return array.some(item => item.nome === obj.nome && item.idade === obj.idade && item.profissao === obj.profissao)
+        }
+        function verificarNome(nome) {
+            if (isNaN(nome) && nome.trim() !== "") {
+                return nome.toLowerCase()
+            } else {
+                return false
+            }
+        }
+        function verificarIdade(idade) {
+            if (!isNaN(idade) && idade > 0) {
+                return idade
+            } else {
+                return false
+            }
+        }
+        function verificarProf(prof) {
+            if (isNaN(prof) && prof.trim() !== "") {
+                return prof.toLowerCase()
+            } else {
+                return false
+            }
+        }
+        function criaDado(nomeValor, idadeValor, profValor) {
+
+            if (verificarNome(nomeValor) === false) {
+                alert('Nome invalido ou campo vazio')
+                return
+            }
+            if (verificarIdade(idadeValor) === false) {
+                alert('Idade invalida ou campo vazio')
+                return
+            }
+            if (verificarProf(profValor) === false) {
+                alert('Profissão invalida ou campo vazio')
+                return
+            }
+            const pessoa = {
+                    nome: verificarNome(nomeValor)
+                    ,
+                    idade: verificarIdade(idadeValor)
+                    ,
+                    profissao: verificarProf(profValor)
+                }
+            if (verificarDuplicidade(pessoa, dadosAdicionados)) {
+                alert('Dados em duplicidade')
+                return
+
+            } else {
+                dadosAdicionados.push(pessoa)
+                const {nome: n, idade: i, profissao: p } = pessoa
+
+                
+                const li = document.createElement('li')
+                li.innerText = `Nome: ${n} | Idade: ${i} | Profissão: ${p}`
+                exibirTarefa.appendChild(li)
+                console.log(dadosAdicionados)
+
+            }
+            
+        }
+        botaoadd.addEventListener('click', function () {
+            criaDado(nome.value, idade.value, prof.value)
+        })
+    </script>
+
+</body>
+
+</html>

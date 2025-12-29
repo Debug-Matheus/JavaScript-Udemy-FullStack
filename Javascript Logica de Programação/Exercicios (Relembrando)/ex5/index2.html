@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage 2</title>
+    <style>
+        body{
+            background-color: darkslategrey;
+            
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            font-size: 2rem;
+
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <button id="mais">+</button>
+        <p id="valor"></p>
+        <button id="menos">-</button>
+    </section>
+    <script>
+        const btnMais = document.querySelector('#mais')
+        const btnMenos = document.querySelector('#menos')
+        const valorTela = document.querySelector('#valor')
+        
+            let contador = Number(localStorage.getItem('contador'))
+            if(!contador)contador = 0
+            valorTela.innerText = contador
+            
+        
+
+        function atualizarTela (){
+            valorTela.innerText = contador
+            localStorage.setItem('contador', valorTela)
+        }
+        btnMais.addEventListener('click', () =>{
+            contador++
+            atualizarTela()
+        })
+        btnMenos.addEventListener('click', () =>{
+            contador--
+            atualizarTela()
+        })
+        
+    </script>
+</body>
+</html>

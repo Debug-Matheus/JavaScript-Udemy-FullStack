@@ -7,12 +7,12 @@
         }
         //keyupp -> tecla pressionada e solta, quando solta é que acontece o evento
 
-        //keyupp -> tecla pressionada e continuando pressionada
+        //keydown -> tecla pressionada e continuando pressionada
 
         //keypress -> É quando a tecla é pressionada, então pressionou capturou
-        inputTarefa.addEventListener('keypress', function(e){
+        inputTarefa.addEventListener('keydown', function(e){
             console.log(e) //-> ver teclado pressionada a partir do evento
-            if(e.keyCode === 13){
+            if(e.key === 'Enter'){
                 // console.log('ENTER pressionado')
                 if(!inputTarefa.value){
                     alert('Preencha o campo para adicionar uma tarefa')
@@ -33,13 +33,13 @@
             botaoApagar.setAttribute('title', 'Apagar esta tarefa')
             li.appendChild(botaoApagar)
         }
-        function criaTarefa(textoInput){
+        function criaTarefa(textoInput, salvar = true){
             const li = criaLi()
             li.innerText = textoInput
             tarefas.appendChild(li)
             limpaInput()
             criarBotaoApagar(li)
-            salvarTarefas()
+            if(salvar) salvarTarefas()
         }
         btn_add_tarefa.addEventListener('click', function(){
             if(!inputTarefa.value){
@@ -76,7 +76,7 @@
             if(!tarefas) return //Se nao tiver tarefas, retorna
             const listaDeTarefas = JSON.parse(tarefas) //Convertir as strings para array
             for (let tarefa of listaDeTarefas){
-                criaTarefa(tarefa)
+                criaTarefa(tarefa,false)
 
             }
         }

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #125e75;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        span{
+            padding: 10px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            
+            
+            <button id="start">Iniciar</button>
+            <p id="tempo">0</p>
+            <button id="reset">Resetar</button> 
+            <button id="parar"> Parar</button>
+        </section>
+        
+    </main>
+    <script>
+        const start = document.querySelector('#start')
+        const reset = document.querySelector('#reset')
+        const parar  = document.querySelector('#parar')
+        const tempo = document.querySelector('#tempo')
+
+        
+        let contador = 0
+        let timer
+        start.addEventListener('click',function(){
+             timer = setInterval(function(){
+                contador++
+                tempo.innerHTML = contador
+            },1000)
+        })
+        reset.addEventListener('click', function(){
+            contador = 0
+            tempo.innerHTML = contador
+            clearInterval(timer)
+        })
+
+        parar.addEventListener('click', function(){
+            clearInterval(timer)
+        })
+    </script>
+</body>
+
+</html>

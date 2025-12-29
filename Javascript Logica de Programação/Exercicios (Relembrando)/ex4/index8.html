@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>setTimeout</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: #125e75;
+        }
+
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        span{
+            padding: 10px;
+            font-size: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="container">
+            
+            <p>HH:MM:SS</p>
+
+        </section>
+        
+    </main>
+    <script>
+        const paragrafo = document.querySelector('p')
+        const container = document.querySelector('.container')
+        function relogio(){
+            function retornaHoraAtual(){
+            const data = new Date()
+
+            return data.toLocaleTimeString('pt-BR')
+            }
+        
+            const timer = setInterval(function(){
+                paragrafo.innerText = retornaHoraAtual()
+            },1000)
+            const btn = document.createElement('button')
+            btn.textContent = 'Parar'
+            container.appendChild(btn)
+            btn.addEventListener('click', function(){
+                clearInterval(timer)
+            })
+        }
+        relogio()
+    </script>
+</body>
+
+</html>

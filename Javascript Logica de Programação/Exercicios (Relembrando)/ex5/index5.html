@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage 5</title>
+</head>
+
+<body>
+    <div class="div1">
+        <label for="" id="labelUser">Usuario</label>
+        <input type="text" id="usuario">
+    </div>
+    <div>
+        <label for="" id="labelSenha">Senha</label>
+        <input type="password" id="senha">
+    </div>
+    <div>
+        <button id="entrar">Entrar</button>
+        <button id="cadastrar">Cadastrar</button>
+        <button id="voltar">Voltar</button>
+    </div>
+    <div id="exibir">
+
+    </div>
+    <script>
+        const entrar = document.querySelector('#entrar')
+        const cadastrar = document.querySelector('#cadastrar')
+        const voltar = document.querySelector('#voltar')
+        const user = document.querySelector('#usuario')
+        const password = document.querySelector('#senha')
+        const exibir = document.querySelector('#exibir')
+        const labelUser = document.querySelector('#labelUser')
+        const labelSenha = document.querySelector('#labelSenha')
+        const p = document.createElement('p')
+
+        const usuariosSalvos = localStorage.getItem('usuarios')
+        const usuarios = JSON.parse(usuariosSalvos) || []
+
+        function salvarUsuarios() {
+            const usuariosJson = JSON.stringify(usuarios)
+            localStorage.setItem('usuarios', usuariosJson)
+        }
+        function verificarUsuarioDuplicado(usuarioDuplicado, arrayUsuarios) {
+            if (arrayUsuarios.some(item => item.usuario.trim().toLowerCase() === usuarioDuplicado.trim().toLowerCase())) {
+                throw new Error('Usuario duplicado')
+            }
+        }
+        function usuarioExistente(usuarioExistente, senhaExistente, arrayUsuarios) {
+            const usuarioEncontrado = arrayUsuarios.find(item => item.usuario.trim().toLowerCase() === usuarioExistente.trim().toLowerCase() && item.senha.trim().toLowerCase() === senhaExistente.trim().toLowerCase())
+
+            if (!usuarioEncontrado) {
+                throw new Error('Usuario ou senha incorretos')
+            }
+            usuarioEncontrado.logado = true
+            salvarUsuarios()
+            renderizarUsuario(usuarioExistente)
+        }
+        function voltarLogin(arrayUsuarios) {
+            const usuarioLogado = arrayUsuarios.find(item => item.logado === true)
+            if (!usuarioLogado) {
+                throw new Error('Nenhum usuario logado')
+            }
+            usuarioLogado.logado = false
+            salvarUsuarios()
+            voltarTela()
+
+        }
+        function voltarTela() {
+            entrar.style.display = 'block'
+            cadastrar.style.display = 'block'
+            voltar.style.display = 'none'
+            user.style.display = 'block'
+            password.style.display = 'block'
+            p.remove()
+            labelSenha.style.display = 'block'
+            labelUser.style.display = 'block'
+        }
+        function campoVazio(usuario, senha) {
+            if (usuario === '' || senha === '') {
+                throw new Error('Campo vazio')
+            }
+        }
+        function renderizarUsuario(usuario) {
+            entrar.style.display = 'none'
+            cadastrar.style.display = 'none'
+            voltar.style.display = 'block'
+            user.style.display = 'none'
+            password.style.display = 'none'
+            labelSenha.style.display = 'none'
+            labelUser.style.display = 'none'
+            p.textContent = `O usuario ${usuario} esta logado`
+            document.body.appendChild(p)
+        }
+        function renderizarCadastro(usuarioCadastro) {
+            alert(`Parabéns ${usuarioCadastro}! Cadastro concluído`)
+        }
+        function criarNovoUsuario(usuario, senha) {
+            const login = {
+                usuario: usuario,
+                senha: senha,
+                logado: false
+            }
+            usuarios.push(login)
+            salvarUsuarios()
+            renderizarCadastro(usuario)
+        }
+        //função criada e executada automaticamente
+        (function restaurarSessao() {
+            const usuarioLogado = usuarios.find(u => u.logado === true)
+
+            if (usuarioLogado) {
+                renderizarUsuario(usuarioLogado.usuario)
+            }
+        })();
+        cadastrar.addEventListener('click', () => {
+            try {
+                campoVazio(user.value, password.value)
+                verificarUsuarioDuplicado(user.value, usuarios)
+                criarNovoUsuario(user.value, password.value)
+            } catch (error) {
+                alert(error.message)
+            }
+            console.log(usuarios)
+        })
+        entrar.addEventListener('click', () => {
+            try {
+                //Saber se existe no array
+                //Se existir, exibe senão catch
+                usuarioExistente(user.value, password.value, usuarios)
+                user.style.display = 'none'
+                password.style.display = 'none'
+                entrar.style.display = 'none'
+                cadastrar.style.display = 'none'
+                voltar.style.display = 'block'
+                labelSenha.style.display = 'none'
+                labelUser.style.display = 'none'
+                console.log(usuarios)
+            } catch (error) {
+                alert(error.message)
+            }
+            finally {
+                user.value = ''
+                password.value = ''
+            }
+        })
+        voltar.addEventListener('click', () => {
+            try {
+                voltarLogin(usuarios)
+                console.log(usuarios)
+            } catch (error) {
+                alert(error.message)
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
