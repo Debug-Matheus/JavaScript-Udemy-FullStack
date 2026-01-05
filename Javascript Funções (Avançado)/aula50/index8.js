@@ -3,4 +3,6 @@
 function funcao({nome, sobrenome, idade}){
    console.log(nome,sobrenome,idade)
 }
-funcao({nome: 'Matheus', sobrenome: 'Silva', idade: 20})
+let obj = {nome: 'Ana', sobrenome: 'Lima', idade: 25}
+funcao(obj)
+
