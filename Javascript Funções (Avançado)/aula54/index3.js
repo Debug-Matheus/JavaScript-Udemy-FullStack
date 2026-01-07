@@ -1,16 +1,20 @@
 function inicio(callback){
     console.log('Inicio')
-    callback()
+    if(typeof callback ==='function'){
+        callback()
+    }
 }
 function meio(callback){
     setTimeout(function(){
         console.log('Meio')
+        callback?.()
     },1000)
-    callback()
+    
 }
-function fim(){
+function fim(callback){
     setTimeout(function(){
         console.log('Fim')
+        callback?.()
     },1000)
 
 }
