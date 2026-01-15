@@ -26,4 +26,5 @@ function criaPessoa(nome,sobrenome,a,p){
 const p1 = criaPessoa('Luiz', 'Otavio', 1.70, 55)
 const p2 = criaPessoa('Maria', 'Luzia', 1.80, 60)
 p1.nomeCompleto = 'Matheus Vasconcelos da Silva'
+console.log(p1.sobrenome)
 console.log(p1.fala('falando oi'))
