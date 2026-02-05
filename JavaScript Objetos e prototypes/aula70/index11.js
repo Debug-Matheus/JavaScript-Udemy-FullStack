@@ -3,14 +3,13 @@
 function Pessoa(nome,sobrenome){
     this.nome = nome
     this.sobrenome = sobrenome
-    this.nomeCompleto = function(){
-        return `${this.nome} ${this.sobrenome}`
-    }
+    
     Object.freeze(this) //Travando o this aos primeiros valores passados
 }
 const p1 = new Pessoa('Matheus', 'Vasconcelos')
 p1.nome = 'Lucas' 
 delete p1.nome //Não deletou por causa que o this está travado
 const p2 = new Pessoa('Luiz', 'Otavio')
+p2.nome = 'Mauro'
 console.log(p1) // Function Pessoa é um construtor do objeto
-
+console.log(p2)

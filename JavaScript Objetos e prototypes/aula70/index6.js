@@ -9,10 +9,10 @@ pessoa.getIDataNascimento = function(){
     const dataAtual = new Date()
     return dataAtual.getFullYear() - this.idade
 }
-for(valor in pessoa){
+for(let valor in pessoa){
     console.log(valor)
 }
 console.log('===================')
-for(valor in pessoa){
+for(let valor in pessoa){
     console.log(pessoa[valor])
 }
