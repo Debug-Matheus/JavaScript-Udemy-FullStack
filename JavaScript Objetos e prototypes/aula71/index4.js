@@ -1,7 +1,7 @@
 //defineProperty -> Vai travar apenas uma propriedade do objeto
 //defineProperties -> Vai travar varias propriedades do objeto
 
-//Uma chave do Object.defineProperty pode receber uma função
+//Uma propriedade do Object.defineProperty pode receber uma função
 function Produto(nome,preco,estoque){
     this.nome = nome;
     this.preco = preco;
