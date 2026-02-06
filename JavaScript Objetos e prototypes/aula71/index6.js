@@ -1,7 +1,7 @@
 //defineProperty -> Vai travar apenas uma propriedade do objeto
 //defineProperties -> Vai travar varias propriedades do objeto
 
-//Comparando Object keys que retorna as chaves em array e o for in que retorna normal, mas o enumerable está false então não vai aparecer as chaves
+//Exbindo as chaves do obejto com Object.keys, mas o enumerable está false então não vai aparecer as chaves
 function Produto(nome,preco,estoque){
     this.nome = nome;
     this.preco = preco;
