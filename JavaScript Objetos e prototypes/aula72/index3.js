@@ -6,10 +6,11 @@ function criarProduto(nome){
             return nome
         },
        
-    } set nome(valor){
+        set nome(valor){
             valor = valor.split(' ')
             nome = valor.shift()
         }
+    }    
 }
 const p2 = criarProduto('Matheus Vasconcelos')
 p2.nome = 'Maria Clara'

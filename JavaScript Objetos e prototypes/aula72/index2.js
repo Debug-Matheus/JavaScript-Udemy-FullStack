@@ -13,7 +13,7 @@ function Produto(nome,preco,estoque){
         },
         set: function(valor){
             if(typeof valor !== 'number'){
-                console.log('Not a number')
+                throw new Error('Not a number')
                 return
             }
             estoquePrivado = valor
@@ -21,7 +21,25 @@ function Produto(nome,preco,estoque){
         configurable : true //Posso criar novamente essa propriedade e alterar outros comandos
     });
 }
-const p1 = new Produto('Camiseta', 30, 3);
-p1.estoque = 11
-console.log(p1.estoque)
+function verificarEstoque(valor){
+    if(typeof valor !== 'number'){
+        throw new Error('Not a number')
+        return
+    }
+    return valor  
+
+}
+try{
+    const p1 = new Produto('Camiseta', 30, verificarEstoque(3));
+    console.log(p1.estoque)
+    p1.estoque = 11
+    console.log(p1.estoque)//Só vai executar se não tiver erro
+}catch(e){
+    console.log(e.message)
+}finally{
+    console.log('Fim...')
+}   
+
+
+
 
