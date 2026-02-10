@@ -19,7 +19,8 @@ function Produto(nome,preco,estoque){
         configurable : true //Posso criar novamente essa propriedade e alterar outros comandos
     });
 }
-const p1 = new Produto('Camiseta', 30, 3);
-p1.estoque = '10'
-console.log(p1.estoque)
 
+const p1 = new Produto('Camiseta', 30, 3);
+console.log(p1.estoque)
+p1.estoque = 'a'
+console.log(p1.estoque)
