@@ -32,19 +32,15 @@ Pessoa.prototype.nomeCompleto = function(){
     return `${this.nome} ${this.sobrenome}`
 }
 Pessoa.prototype.objetoCriado = 'Objeto criado com sucesso'
-const p1 = new Pessoa('Matheus', 'Vasconcelos')
+const p1 = new Pessoa('Matheus', 'Vasconcelos')// <- Pessoa = Função construtora
 const p2 = new Pessoa('Lucas', 'Vasconcelos')
 const p3 = new Pessoa('Arthur', 'Vasconcelos')
-const p4 = new Pessoa('Pedro', 'Vasconcelos')
-const p5 = new Pessoa('Caio', 'Vasconcelos') // <- Pessoa = Função construtora
-const p6 = new Pessoa('tiago', 'Vasconcelos')
+
 const date = new Date() // <- Date = Função construtora
+
 console.dir(p1)
 console.dir(p2)
 console.dir(p3)
-console.dir(p4)
-console.dir(p5)
-console.dir(p6)
 
 console.dir(p2.nomeCompleto())
 console.dir(p2.objetoCriado)

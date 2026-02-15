@@ -13,3 +13,5 @@ Pessoa.prototype.nomeCompleto = function(){
     return `${this.nome} ${this.sobrenome}`
 }
 const p1 = new Pessoa('Matheus', 'Vasconcelos')
+
+console.dir(p1)
