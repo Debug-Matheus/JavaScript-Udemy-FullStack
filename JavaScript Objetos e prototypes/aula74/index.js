@@ -23,7 +23,7 @@ function Pessoa(nome,sobrenome){
     // this.nomeCompleto = function(){
     //     return `Original ${this.nome} ${this.sobrenome}`
     // }
-    
+       
 }
 
 // Pessoa.prototype === p1.__proto__ -> true
@@ -32,9 +32,9 @@ Pessoa.prototype.nomeCompleto = function(){
     return `${this.nome} ${this.sobrenome}`
 }
 Pessoa.prototype.objetoCriado = 'Objeto criado com sucesso'
-const p1 = new Pessoa('Matheus', 'Vasconcelos')// <- Pessoa = Função construtora
-const p2 = new Pessoa('Lucas', 'Vasconcelos')
-const p3 = new Pessoa('Arthur', 'Vasconcelos')
+const p1 = new Pessoa('Matheus', 'Vasconcelos', 38)// <- Pessoa = Função construtora
+const p2 = new Pessoa('Lucas', 'Vasconcelos', 15)
+const p3 = new Pessoa('Arthur', 'Vasconcelos', 42)
 
 const date = new Date() // <- Date = Função construtora
 
