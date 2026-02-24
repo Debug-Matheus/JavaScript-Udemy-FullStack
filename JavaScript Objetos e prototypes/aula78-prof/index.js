@@ -1,0 +1,39 @@
+function ValidaCpf(cpfEnviado){
+    Object.defineProperty(this, 'cpfLimpo',{
+        enumerable: true, 
+        get: function(){
+            return cpfEnviado.replace(/\D/g, '')
+        }
+    })
+
+}
+ValidaCpf.prototype.valida = function(){
+    if(typeof this.cpfLimpo === 'undefined') return false
+    if(this.cpfLimpo.length !== 11) return false
+
+    const cpfParcial = this.cpfLimpo.slice(0, -2)
+    const digito1 = this.criarDigito(cpfParcial)
+    const digito2 = this.criarDigito(cpfParcial + digito1)
+
+    const novoCpf = cpfParcial + digito1 + digito2
+    return novoCpf === this.cpfLimpo
+}
+ValidaCpf.prototype.criarDigito = function(cpfParcial){
+    const cpfArray = Array.from(cpfParcial)
+
+    let quantidade = cpfArray.length + 1
+    const total = cpfArray.reduce(function(acumulador,valor){
+        acumulador += quantidade * Number(valor)
+        quantidade--
+        return acumulador
+    },0)
+    const digito = 11 -(total % 11)
+    return digito > 9 ? '0' : String(digito)
+}
+const cpf = new ValidaCpf('712.304.194-11')
+
+if(cpf.valida()){
+    console.log('CPF Valido')
+}else{
+    console.log('CPF Inválido')
+}
