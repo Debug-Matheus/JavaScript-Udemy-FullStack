@@ -45,7 +45,7 @@ function receberCpfValidado(entrada){
             if(receberCpfValidado(entradaUsuario)){
                 
                 alert('Cpf Valido')
-                const resultado = document.querySelector('#resultado')
+                const resultado = document.querySelector4('#resultado')
                 resultado.innerHTML = 'Cpf Valido✅'
             }
             

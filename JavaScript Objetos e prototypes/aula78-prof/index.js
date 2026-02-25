@@ -10,6 +10,7 @@ function ValidaCpf(cpfEnviado){
 ValidaCpf.prototype.valida = function(){
     if(typeof this.cpfLimpo === 'undefined') return false
     if(this.cpfLimpo.length !== 11) return false
+    if(this.isSequencia()) return false
 
     const cpfParcial = this.cpfLimpo.slice(0, -2)
     const digito1 = this.criarDigito(cpfParcial)
@@ -17,6 +18,10 @@ ValidaCpf.prototype.valida = function(){
 
     const novoCpf = cpfParcial + digito1 + digito2
     return novoCpf === this.cpfLimpo
+}
+ValidaCpf.prototype.isSequencia = function(){
+    const sequencia = this.cpfLimpo[0].repeat(this.cpfLimpo.length)
+    return sequencia === this.cpfLimpo
 }
 ValidaCpf.prototype.criarDigito = function(cpfParcial){
     const cpfArray = Array.from(cpfParcial)
