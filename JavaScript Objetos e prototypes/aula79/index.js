@@ -22,13 +22,13 @@ Conta.prototype.verSaldo = function(){
      `Saldo: R$ ${this.saldo.toFixed(2)}`
     )
 }
+// const conta1 = new Conta(11,22, 10)
+// console.log(conta1)
+// conta1.depositar(5)
+// conta1.depositar(10)
+// conta1.sacar(24)
+// conta1.sacar(5)
 
-const conta1 = new Conta(11,22, 10)
-console.log(conta1)
-conta1.depositar(5)
-conta1.depositar(10)
-conta1.sacar(24)
-conta1.sacar(5)
 function Corrente(agencia,conta,saldo,limite){
     Conta.call(this, agencia,conta,saldo)
     this.limite = limite
@@ -51,6 +51,8 @@ const contaCorrente = new Corrente(11,22,0, 100)
 contaCorrente.depositar(10)
 contaCorrente.sacar(110)
 contaCorrente.sacar(10)
+
+console.log('=====================')
 
 function Poupanca(agencia,conta,saldo){
     Conta.call(this, agencia,conta,saldo)
