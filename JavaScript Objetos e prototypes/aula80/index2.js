@@ -32,3 +32,5 @@ console.log(p2)
 p1.fala()
 console.log(p1.nome + ' ' + p1.sobrenome)
 
+
+
