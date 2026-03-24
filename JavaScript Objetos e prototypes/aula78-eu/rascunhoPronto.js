@@ -35,12 +35,7 @@ function validarCpf(cpf) {
     // Compara com os dígitos informados
     return digito1 == cpfArray[9] && digito2 == cpfArray[10]
 }
-
-
 // ===== TESTE =====
-
-
-
 (function cpfMariaValidar(){
     const cpfDigitado = '705.484.450-52'
     

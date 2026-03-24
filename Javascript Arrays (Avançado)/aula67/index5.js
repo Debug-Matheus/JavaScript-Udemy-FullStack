@@ -13,5 +13,5 @@ const pessoaVelha = pessoas.reduce(function(acumulador, valor){
         return acumulador
     }
     return valor
-})
+},[])
 console.log(pessoaVelha)
