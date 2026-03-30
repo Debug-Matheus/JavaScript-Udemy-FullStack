@@ -1,14 +1,11 @@
 const _velocidade = Symbol('velocidade')
-const _idade = Symbol('idade')
 class Carro{
-    constructor(nome,idade){
+    constructor(nome){
         this.nome = nome
         this[_velocidade] = 0
-        this[_idade] = idade
     }
-    
-    get idade(){
-        return this[_idade]
+    get velocidade(){
+        return this[_velocidade]
     }
     
     acelerar(){
@@ -21,15 +18,12 @@ class Carro{
     }
 
 }
-const carro1 = new Carro('Gol',18)
-
-carro1.freiar()
-
+const carro1 = new Carro('Gol')
+carro1.velocidade = 99
 console.log(carro1)
 
-for(let i = 0; i <= 50; i++){
-    carro1.acelerar()
-}
-carro1.idade = 50
-carro1.velocidade = 1500
+//Hackeando a chave symbol
+const symbols = Object.getOwnPropertySymbols(carro1)
+const chave = symbols[0]
+carro1[chave] = 999
 console.log(carro1)

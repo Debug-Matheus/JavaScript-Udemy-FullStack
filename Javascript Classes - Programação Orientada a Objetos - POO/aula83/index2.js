@@ -9,7 +9,7 @@ class Carro{
         if(this.velocidade >=100 )return
         this.velocidade++
     }
-
+    
     freiar(){
         if(this.velocidade <= 0)return
         this.velocidade--

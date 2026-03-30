@@ -9,7 +9,7 @@ class Carro{
     }
     set velocidade(valor){
         if(typeof valor !== 'number')return
-        if(valor >= 100 || valor <= 0)return console.log('Velocidade fora do normal: ' + valor + 'km/h')
+        if(valor >= 100 || valor < 0)return console.log('Velocidade fora do normal: ' + valor + 'km/h')
         this[_velocidade] = valor
     }
     acelerar(){
@@ -33,3 +33,4 @@ for(let i = 0; i <= 50; i++){
 carro1.velocidade = 99
 console.log(carro1.nome)
 console.log(carro1.velocidade)
+console.log(carro1)
