@@ -1,3 +1,4 @@
+//Getters e Setters
 const _velocidade = Symbol('velocidade')
 class Carro{
     constructor(nome){
