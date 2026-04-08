@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de validação</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <main>
+        <form action="php" method="post" autocomplete="on" id="form-cpf">
+            <div id="titulo">
+                <h2>Formulário de cadastro</h2>
+                <ul>
+                    <li>Nenhum campo obrigatorio pode estar vazio</li>
+                    <li>Usuário só poderá conter letrar e/ou números</li>
+                    <li>Usuário deverá ter entre 5 e 15 caracteres</li>
+                    <li>Senha deverá ter entre 6 e 12 caracteres</li>
+                </ul>
+            </div>
+                <div id="inputs">
+                    <label for="inome">Nome:</label>
+                    <input type="text" name="nome" id="inome">
+                    <label for="isobrenome">Sobrenome:</label>
+                    <input type="text" name="sobrenome" id="isobrenome">
+                    <label for="icpf">CPF:</label>
+                    <input type="text" name="cpf" id="icpf">
+                    <label for="iusuario">Usuário:</label>
+                    <input type="text" name="usuario" id="iusuario">
+                    <label for="isenha">Senha:</label>
+                    <input type="text" name="senha" id="isenha">
+                    <label for="irepetir">Repetir Senha:</label>
+                    <input type="text" name="repetir" id="irepetir">
+                    <button id="enviar">Enviar</button>
+                </div>
+        </form>
+    </main>
+</body>
+</html>
