@@ -15,7 +15,7 @@ main{
     justify-content: center;
     align-items: center;
     min-width: 100vw;
-    min-height: 100vh;
+    min-height: 100vh;  
 }
 form{
     background-color: #fff;
@@ -24,7 +24,6 @@ form{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-flow: column wrap;
-    
 }    
    
 form h2{
@@ -48,18 +47,19 @@ li{
     margin-bottom: 10px;
     
 }
-#inputs{
+.inputs{
     display: flex;
     flex-flow: column wrap;
     justify-content: space-between;
     margin-bottom: 10px;
+    padding-right: 4px;
     
 }
-#inputs input{
-    margin-bottom: 10px;
+.inputs input{
+    margin-bottom: 5px;
     padding: 5px;
 }
-#inputs label{
+.inputs label{
     margin-bottom: 6px;
 }
 #enviar{
@@ -74,4 +74,27 @@ li{
     color: #005662;
     border: 1px solid #005662;
     transition: .4s;
+}
+.lnr{
+    cursor: pointer;
+    position: relative;
+    left: 318px;
+    top: -30px;
+    color: #005662;
+    font-size: 20px;
+    width: 22px;
+}
+.lnr:hover{
+    color: #fff;
+    transition: .4s;
+    background-color: #005662;
+}
+.error-text{
+    color: red;
+    font-size: 12px;
+    margin-left: 10px;
+    display: block;
+}
+span{
+    display: none;
 }

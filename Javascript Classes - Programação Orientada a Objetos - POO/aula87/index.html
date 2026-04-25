@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de validação</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
 </head>
 <body>
     <main>
-        <form action="php" method="post" autocomplete="on" id="form-cpf">
+        <form action="/" method="post" autocomplete="on" class="formulario">
             <div id="titulo">
                 <h2>Formulário de cadastro</h2>
                 <ul>
@@ -19,21 +20,43 @@
                 </ul>
             </div>
                 <div id="inputs">
-                    <label for="inome">Nome:</label>
-                    <input type="text" name="nome" id="inome">
-                    <label for="isobrenome">Sobrenome:</label>
-                    <input type="text" name="sobrenome" id="isobrenome">
-                    <label for="icpf">CPF:</label>
-                    <input type="text" name="cpf" id="icpf">
-                    <label for="iusuario">Usuário:</label>
-                    <input type="text" name="usuario" id="iusuario">
-                    <label for="isenha">Senha:</label>
-                    <input type="text" name="senha" id="isenha">
-                    <label for="irepetir">Repetir Senha:</label>
-                    <input type="text" name="repetir" id="irepetir">
-                    <button id="enviar">Enviar</button>
+                    <div class="inputs" id="idnome">
+                        <label for="inome">Nome:</label>
+                        <input type="text" name="nome" id="inome" class="nome validar" placeholder="Somente Letras">
+                        
+                    </div>
+                    <div class="inputs">
+                        <label for="isobrenome">Sobrenome:</label>
+                        <input type="text" name="sobrenome" id="isobrenome" class="sobrenome validar">
+                        
+                    </div>
+                    <div class="inputs">
+                        <label for="icpf">CPF:</label>
+                        <input type="text" name="cpf" id="icpf" class="cpf validar">
+                        
+                    </div>
+                    <div class="inputs">
+                        <label for="iusuario">Usuário:</label>
+                        <input type="text" name="usuario" id="iusuario" class="usuario validar">
+                        
+                        
+                    </div>
+                    <div class="inputs">
+                        <label for="isenha">Senha:</label>
+                        <input type="password" name="senha" id="isenha" class="senha validar">
+                        
+                    </div>
+                    <div class="inputs">
+                        <label for="irepetir">Repetir Senha:</label>
+                        <input type="password" name="repetir" id="irepetir" class="repetir-senha validar">
+                        
+                    </div>
+                    <div class="inputs"><button id="enviar" type="submit">Enviar</button></div>
+
                 </div>
         </form>
     </main>
+    <script src="assets/js/validaCpf.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>

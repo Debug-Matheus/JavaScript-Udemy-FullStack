@@ -24,16 +24,16 @@ ValidaCpf.prototype.isSequencia = function(){
     return sequencia === this.cpfLimpo
 }
 ValidaCpf.prototype.criarDigito = function(cpfParcial){
-    const cpfArray = Array.from(cpfParcial)
+        const cpfArray = Array.from(cpfParcial)
 
-    let quantidade = cpfArray.length + 1
-    const total = cpfArray.reduce(function(acumulador,valor){
-        acumulador += quantidade * Number(valor)
-        quantidade--
-        return acumulador
-    },0)
-    const digito = 11 -(total % 11)
-    return digito > 9 ? '0' : String(digito)
+        let quantidade = cpfArray.length + 1
+        const total = cpfArray.reduce(function(acumulador,valor){
+            acumulador += quantidade * Number(valor)
+            quantidade--
+            return acumulador
+        },0)
+        const digito = 11 -(total % 11)
+        return digito > 9 ? '0' : String(digito)
 }
 const cpf = new ValidaCpf('712.304.194-11')
 
