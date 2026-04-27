@@ -77,9 +77,8 @@ li{
 }
 .lnr{
     cursor: pointer;
-    position: relative;
-    left: 318px;
-    top: -30px;
+    
+    
     color: #005662;
     font-size: 20px;
     width: 22px;
