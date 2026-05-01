@@ -6,7 +6,11 @@ function rand(min,max){
 
 function esperaAi(msg,tempo){
     return new Promise((resolve,reject)=>{
-        if(typeof msg !== 'string') reject(new Error('ERRO'))
+        
+        if(typeof msg !== 'string') {
+            reject('BAD VALUE')
+            return
+        }
         setTimeout(()=>{
             resolve(msg)
         },tempo)
@@ -19,7 +23,7 @@ esperaAi('Conexão com o BD', rand(1,3))
     })
     .then(resposta=>{
         console.log(resposta)
-        return esperaAi(1123123, rand(1,3))
+        return esperaAi(123, rand(1,3))
     })
     .then(resposta =>{
         console.log(resposta)
