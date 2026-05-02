@@ -16,7 +16,7 @@ function esperaAi(msg,tempo){
         },tempo)
     })
 }
-esperaAi('Conexão com o BD', rand(1,3))
+esperaAi(123, rand(1,3))
     .then(resposta =>{
         console.log(resposta)
         return esperaAi('Buscando dados da Base', rand(1,3))
