@@ -16,15 +16,14 @@ async function carregaPagina(el) {
         const paralelo = fetch(href)
         const response = await paralelo
 
-        if (response.status >= 200 && response.status < 300) {
-            throw new Error('Error 404!')
+        if (!response.ok) {
+            throw new Error(`Erro HTTP! Status: ${response.status}`)
         }
         const html = await response.text()
         carregaPagina(html)
     } catch (error) {
         console.error(error)
     }
-
 }
 function carregaResultado(response) {
     const resultado = document.querySelector('.resultado')

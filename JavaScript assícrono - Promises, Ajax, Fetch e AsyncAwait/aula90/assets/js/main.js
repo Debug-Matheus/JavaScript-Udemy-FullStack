@@ -15,8 +15,8 @@ function carregaPagina(el) {
 
     fetch(href)
     .then(response =>{
-        if(response.status >= 200 && response.status < 300){
-            throw new Error('Erro 404!')
+        if(!response.ok){
+            throw new Error(`Erro HTTP! Status: ${response.status}`);
         }
         return response.text()
     })
