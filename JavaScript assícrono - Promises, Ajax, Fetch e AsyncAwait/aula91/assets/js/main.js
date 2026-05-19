@@ -2,7 +2,7 @@
 //   .then(resposta => resposta.json())
 //   .then(json => carregaElementosNaPagina(json))
 
-//AXIOS usa no navegador o XHR (XMLHttpRequest)
+//AXIOS usa no navegador o type XHR (XMLHttpRequest)
 axios('http://127.0.0.1:3000/aula91/pessoas.json')
     .then(resposta => carregaElementosNaPagina(resposta.data))
 

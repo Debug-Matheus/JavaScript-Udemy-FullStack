@@ -17,7 +17,6 @@ function carregaElementosNaPagina(json) {
     json[i].id = i
   }
   console.log(json)*/
-
   const novasPessoas = new Map();
   // O .entries() no array nos dá o [índice, valor] de cada item
   for (const [index, pessoa] of json.entries()) {
