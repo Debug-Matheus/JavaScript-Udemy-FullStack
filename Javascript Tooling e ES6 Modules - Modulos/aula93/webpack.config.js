@@ -1,8 +1,8 @@
 const path = require('path') //Padrão do NODE CommonJS
 
 module.exports = {
-    mode: 'production',
-    entry: './src/index.js',
+    mode: 'development',
+    entry: './src/index.js', //O Padrão do webpack é procurar o index na pasta src
     output: {
         path: path.resolve(__dirname, 'public', 'assets', 'js'),
         filename:'bundle.js'
